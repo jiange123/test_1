@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.icarbonx:common-web:1.7-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://D:/develop/maven/repository/com/icarbonx/common-web/1.7-SNAPSHOT/common-web-1.7-20170919.040241-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/develop/maven/repository/com/icarbonx/common-web/1.7-SNAPSHOT/common-web-1.7-20170919.040241-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/develop/maven/repository/com/icarbonx/common-web/1.7-SNAPSHOT/common-web-1.7-20170919.040241-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

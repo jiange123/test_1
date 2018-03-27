@@ -1,0 +1,153 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>rabbitmq</groupId>
+  <artifactId>test</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>test Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <parent>
+    <artifactId>parent</artifactId>
+    <groupId>com.icarbonx</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.icarbonx</groupId>
+      <artifactId>commons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.icarbonx</groupId>
+      <artifactId>common-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>com.icarbonx</groupId>
+          <artifactId>commons</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- swagger2 start -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-common</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+     <!--swagger2 end -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+    </dependency>
+    <!-- jackson start -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+    </dependency>
+    <!--mongodb-->
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongo-java-driver</artifactId>
+      <version>2.14.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-mongodb</artifactId>
+      <version>1.8.5.RELEASE</version>
+    </dependency>
+    <!-- rabbitmq start -->
+    <dependency>
+      <groupId>com.rabbitmq</groupId>
+      <artifactId>amqp-client</artifactId>
+      <version>3.6.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.amqp</groupId>
+      <artifactId>spring-rabbit</artifactId>
+      <version>1.6.3.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ctrip.framework.apollo</groupId>
+      <artifactId>apollo-client</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>test</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <path>/rabbit</path>
+          <port>8081</port>
+          <uriEncoding>utf-8</uriEncoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>external.atlassian.jgitflow</groupId>
+        <artifactId>jgitflow-maven-plugin</artifactId>
+        <version>1.0-m5.1</version>
+        <configuration>
+          <flowInitContext>
+            <versionTagPrefix>release-</versionTagPrefix>
+          </flowInitContext>
+          <releaseBranchVersionSuffix>SNAPSHOT</releaseBranchVersionSuffix>
+          <developmentVersion>SNAPSHOT</developmentVersion>
+          <noDeploy>true</noDeploy>
+          <allowSnapshots>true</allowSnapshots>
+          <allowUntracked>true</allowUntracked>
+        </configuration>
+      </plugin>
+    </plugins>
+
+
+
+  </build>
+
+</project>

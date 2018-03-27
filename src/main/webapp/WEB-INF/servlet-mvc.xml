@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!--<context:property-placeholder location="classpath:configs-${env}.properties"/>-->
+	<!-- 只扫描controllers -->
+	<context:component-scan base-package="com.icarbonx.web"  />
+
+	<!-- 视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 统一前缀 -->
+		<property name="prefix" value="/WEB-INF/" />
+		<!-- 统一后缀 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!--在请求是 / 的情况下能够处理静态资源-->
+	<mvc:default-servlet-handler />
+
+	<!-- 默认的注解映射的支持 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<ref bean="mappingJackson2HttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+
+	<!-- swagger 配置-->
+	<bean name="/applicationSwaggerConfig" class="com.icarbonx.web.config.ApplicationSwaggerConfig"/>
+
+</beans>
